@@ -1,0 +1,10 @@
+# Runtime uploaded receipts — keep the security .htaccess, ignore the files
+uploads/receipts/*
+!uploads/receipts/.htaccess
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

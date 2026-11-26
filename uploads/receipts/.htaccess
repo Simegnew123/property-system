@@ -1,0 +1,5 @@
+# Block execution of any script files inside the receipts upload directory
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|php8|phar|cgi|pl|py|jsp|asp|aspx|sh|bash)$">
+    Deny from all
+</FilesMatch>
+Options -ExecCGI
