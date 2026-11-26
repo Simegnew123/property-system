@@ -153,3 +153,16 @@ INSERT INTO units (building_id, floor_number, unit_code, unit_type, area_sqm, ba
 (1, 3, '3rd-302', 'apartment', 88.00,  20000.00, 1800.00, 'vacant'),
 (1, 4, '4th-401', 'apartment',100.00,  25000.00, 2000.00, 'vacant'),
 (1, 4, '4th-402', 'apartment', 92.00,  23000.00, 2000.00, 'vacant');
+
+-- ============================================================
+-- i18n machine-translation cache (used by config/i18n.php)
+-- Stores each dynamic EN<->AM translation once to avoid repeat API calls.
+-- ============================================================
+CREATE TABLE IF NOT EXISTS translation_cache (
+    source_hash     CHAR(32)     NOT NULL PRIMARY KEY,
+    source_text     TEXT         NOT NULL,
+    source_lang     CHAR(2)      NOT NULL,
+    target_lang     CHAR(2)      NOT NULL,
+    translated_text TEXT         NOT NULL,
+    created_at      TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

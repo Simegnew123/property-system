@@ -25,6 +25,11 @@ Built for the Ethiopian property market — all amounts in **ETB** (Ethiopian Bi
 - **Invoice / Receipt** (`/receipt.php`) — Clean printable invoice or payment receipt (Ctrl+P → Save as PDF)
 - **Lease Contract** (`/receipt.php?lease_id=X`) — Full lease contract summary with signature lines
 
+### Bilingual UI — English ⇄ አማርኛ (Amharic)
+- One-click **EN / አማ** language toggle in the top-right corner of every page (choice stored in session)
+- Static UI translated via a built-in dictionary; dynamic DB text (building names, repair descriptions) translated on demand via an external API with **MySQL caching** and **offline graceful fallback**
+- Fully wired through `config/i18n.php` — see [`I18N.md`](I18N.md) for how it works and how to extend it
+
 ---
 
 ## Requirements
@@ -84,7 +89,8 @@ Tenant Portal: http://localhost/property-system/tenant/index.php
 property-system/
 ├── config/
 │   ├── db.php                # PDO database connection + helpers
-│   └── auth.php              # Auth guards + CSRF helpers
+│   ├── auth.php              # Auth guards + CSRF helpers
+│   └── i18n.php              # English <-> Amharic translation layer
 ├── uploads/
 │   └── receipts/
 │       └── .htaccess         # Blocks script execution in upload dir
@@ -119,6 +125,7 @@ property-system/
 | `payments` | Payment records with receipt uploads |
 | `building_expenses` | Shared building expenses for distribution |
 | `maintenance_requests` | Tenant-submitted repair requests |
+| `translation_cache` | Cached EN⇄AM machine translations (auto-created by `schema.sql`) |
 
 ---
 
